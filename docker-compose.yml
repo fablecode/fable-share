@@ -1,0 +1,21 @@
+version: '3.8'
+
+services: 
+
+    # Logging 
+    seq:
+        image: datalust/seq:latest
+        ports:
+            - 1503:80
+        environment:
+            ACCEPT_EULA: "Y"
+
+    # Database
+    fableshare-api-sqldata:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        container_name: fable-share-api-db
+        environment:
+            SA_PASSWORD: "Password0!"
+            ACCEPT_EULA: "Y"   
+        ports: 
+            - "1501:1433"
